@@ -1,0 +1,22 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <title>CSS animation player</title>
+    <meta name="description" content="some desc">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animation.css">
+</head>
+<body>
+
+    <div id="box">DIV BOX TO ANIMATE</div>
+
+    <div class="controls">
+        <button onclick="playPause();">PlayPause</button>
+        <label for="rangeInput">Seek</label>
+        <input id="rangeInput" oninput="seekTo(this.value);" type="range" min="0" max="1" step="0.01">
+    </div>
+<script src="js/main.js"></script>
+</body>
+</html>

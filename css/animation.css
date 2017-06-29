@@ -1,0 +1,48 @@
+.controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+    background-color: yellow;
+}
+
+/* to change */
+@keyframes anim {
+    0% {
+        left: 0;
+        top: 0;
+        /*animation-timing-function: easeInBack;*/
+    }
+
+    10% {
+        left: 500px;
+        top: 0;
+        /*animation-timing-function: easeInBack;*/
+    }
+
+    20% {
+        top: 500px;
+        left: 500px;
+        /*animation-timing-function: easeInBack;*/
+    }
+}
+
+#box {
+    animation-timing-function: linear;
+    /*animation-iteration-count: infinite;*/
+    /*animation-fill-mode: forwards;*/
+}
+
+#box {
+    animation-name: anim;
+    animation-duration: 3s;
+    animation-delay: 1s;
+}
