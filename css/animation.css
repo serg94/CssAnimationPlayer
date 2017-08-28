@@ -1,15 +1,23 @@
+body {
+    margin-left: 200px;
+}
+
 .controls {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 200px;
 }
 
-#box {
-    position: absolute;
+#box1, #box2 {
+    position: relative;
     top: 0;
     left: 0;
     width: 200px;
     height: 200px;
     opacity: 1;
+    background-color: green;
+}
+
+#box2 {
     background-color: yellow;
 }
