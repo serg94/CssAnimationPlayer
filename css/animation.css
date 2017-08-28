@@ -1,11 +1,11 @@
 body {
-    margin-left: 200px;
+    margin-left: 100px;
 }
 
 .controls {
     position: absolute;
     top: 20px;
-    right: 200px;
+    right: 100px;
 }
 
 #box1, #box2 {
@@ -20,4 +20,8 @@ body {
 
 #box2 {
     background-color: yellow;
+}
+
+input[type="button"] {
+    width: 86px;
 }

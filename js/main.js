@@ -20,6 +20,7 @@ let setSeekerProgress = () => {
     range_Input.value = player.progress();
 };
 
+//noinspection JSUnusedGlobalSymbols // calls in computed form
 let delegate = {
     destroy: () => {
         $scope.isPlaying = false;

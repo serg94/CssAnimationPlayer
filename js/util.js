@@ -4,18 +4,17 @@ HTMLElement.prototype.addClass = function (className) {
     this.className += ' ' + className;
 };
 
-HTMLElement.prototype.removeClass = function(className) {
-    let classes = this.className.split(' ');
-    let idx = classes.indexOf(className);
-    if (idx > -1) {
-        classes.splice(idx, 1);
-    }
+HTMLElement.prototype.removeClass = function(classNames) {
+    classNames.split(' ').forEach(className => {
+        let classes = this.className.split(' ');
+        let idx = classes.indexOf(className);
 
-    this.className = classes.join(' ');
-};
+        if (idx > -1) {
+            classes.splice(idx, 1);
+        }
 
-HTMLElement.prototype.removeClass = function (className) {
-    this.className += ' ' + className;
+        this.className = classes.join(' ');
+    });
 };
 
 HTMLElement.prototype.css = function (key, value) {

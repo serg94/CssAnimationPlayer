@@ -14,7 +14,7 @@
     <div id="box2">DIV BOX TO ANIMATE</div>
 
     <div class="controls">
-        <button id="playPauseBtn" onclick="playPause();">PlayPause</button>
+        <input type="button" id="playPauseBtn" onclick="playPause();" value="Play"/>
         <label for="rangeInput"> <b>Drag</b> to seek animation</label>
         <input id="rangeInput" oninput="seekTo(this.value);" type="range" min="0" max="1" step="0.01">
     </div>
