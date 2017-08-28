@@ -1,8 +1,8 @@
 'use strict';
 
 let player = new SequencePlayer();
-let playPauseBtn = window.playPauseBtn;
-let rangeInput = window.rangeInput;
+let play_Pause_Btn = window.playPauseBtn;
+let range_Input = window.rangeInput;
 
 let progressDebounceId = -1;
 let $scope = {
@@ -11,13 +11,13 @@ let $scope = {
     },
 
     set isPlaying(value) {
-        playPauseBtn.value = value ? 'pause' : 'play';
+        play_Pause_Btn.value = value ? 'pause' : 'play';
         this._isPlaying = value;
     }
 };
 
 let setSeekerProgress = () => {
-    rangeInput.value = player.progress();
+    range_Input.value = player.progress();
 };
 
 let delegate = {
@@ -39,7 +39,7 @@ let delegate = {
         }
     },
     iteration: () => {
-        rangeInput.value = 0;
+        range_Input.value = 0;
     },
     end: () => {
         setSeekerProgress();
