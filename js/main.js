@@ -1,8 +1,10 @@
 'use strict';
 
-let player = new SequencePlayer();
-let play_Pause_Btn = window.playPauseBtn;
-let range_Input = window.rangeInput;
+const player = new SequencePlayer();
+
+//noinspection JSUnresolvedVariable
+let play_Pause_Btn = window.playPauseBtn,
+    range_Input = window.rangeInput;
 
 let progressDebounceId = -1;
 let $scope = {
@@ -20,11 +22,16 @@ let setSeekerProgress = () => {
     range_Input.value = player.progress();
 };
 
+let progressDebounce = () => {
+    setSeekerProgress();
+    progressDebounceId = window.requestAnimationFrame(progressDebounce);
+};
+
 //noinspection JSUnusedGlobalSymbols // calls in computed form
 let delegate = {
     destroy: () => {
         $scope.isPlaying = false;
-        window.clearInterval(progressDebounceId);
+        window.cancelAnimationFrame(progressDebounceId);
         progressDebounceId = null;
     },
     play: () => {
@@ -34,7 +41,7 @@ let delegate = {
         $scope.isPlaying = false;
 
         if (progressDebounceId) {
-            window.clearInterval(progressDebounceId);
+            window.cancelAnimationFrame(progressDebounceId);
             progressDebounceId = null;
             setSeekerProgress();
         }
@@ -47,18 +54,15 @@ let delegate = {
     }
 };
 
-let play = function () {
-    player.play(MotionSequence, delegate);
-    requestAnimationFrame(setSeekerProgress);
-    progressDebounceId = window.setInterval(setSeekerProgress, 1000 / 60);
+let play = function (seek) {
+    player.play(MotionSequence, delegate, seek);
+
+    if (typeof seek !== 'number') {
+        progressDebounceId = requestAnimationFrame(progressDebounce);
+    }
 };
+
+window.seekTo = (value) => play(+value);
+window.playPause = () => $scope.isPlaying ? player.pause() : play();
 
 play();
-
-window.seekTo = (value) => {
-    player.play(MotionSequence, delegate, +value);
-};
-
-window.playPause = () => {
-    $scope.isPlaying ? player.pause() : play();
-};
